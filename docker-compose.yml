@@ -3,7 +3,7 @@ services:
   api:
     container_name: api
     build: .
-    command: bash -c "npm run db:upgrade && npm run start"
+    command: bash -c "npm run build && npm run start"
     ports:
       - 5000:5000
     volumes:
@@ -18,15 +18,14 @@ services:
   db:
     container_name: db
     environment:
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    image: postgres:latest
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    image: mongo:latest
     ports:
-      - 5432:5432
+      - 27017:27017
     restart: always
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - mongo-data:/var/lib/mongodb/data
 
 volumes:
-  postgres-data:
+  mongo-data:
