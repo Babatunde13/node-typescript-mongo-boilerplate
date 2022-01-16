@@ -19,7 +19,7 @@ export const encodeUser = (userId: string) => {
 
 export const decodeUser = async (token: string) => {
     try {
-        const userId = jwt.verify(token, envs.secrets.jwt)
+        const userId = jwt.verify(token, envs.secrets.jwt).sub
         return {
             data: userId
         }
