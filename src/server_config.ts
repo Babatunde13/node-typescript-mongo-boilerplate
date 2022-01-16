@@ -7,7 +7,7 @@ const { GET } = HttpMethod
 
 export const routes: Route[] = [
     {
-        path: '/api/v1/movies/',
+        path: '/api/v1/users/',
         method: GET,
         handlers: [requiresLogin, requiresAdmin, getUsersCtrl]
     },
