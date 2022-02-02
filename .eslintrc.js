@@ -18,5 +18,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        // custom rules
+        no_dangerous_function: 'error'
     }
 };

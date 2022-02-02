@@ -5,7 +5,7 @@
    "main": "index.js",
    "scripts": {
       "test": "mocha dist/**/*.spec.js",
-      "lint": "eslint --ext .js,.ts src/",
+      "lint": "node dist/src/lint_codes.js",
       "build": "tsc --project ./tsconfig.json",
       "start": "node dist/src/index.js",
       "dev": "nodemon dist/src/index.js",
@@ -19,6 +19,7 @@
       "bcrypt": "5.0.1",
       "dotenv": "12.0.4",
       "express": "4.17.2",
+      "glob": "7.2.0",
       "jsonwebtoken": "8.5.1",
       "mongoose": "6.1.6",
       "morgan": "1.10.0"
@@ -29,6 +30,7 @@
       "@types/chai": "4.3.0",
       "@types/dotenv": "8.2.0",
       "@types/express": "4.17.13",
+      "@types/glob": "7.2.0",
       "@types/jsonwebtoken": "8.5.7",
       "@types/mocha": "9.0.0",
       "@types/mongoose": "5.11.97",
