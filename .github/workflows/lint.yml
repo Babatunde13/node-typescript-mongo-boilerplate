@@ -20,6 +20,9 @@ jobs:
     - name: setup
       run: |
         npm install
+    - name: build
+      run: |
+        npm run build
     - name: lint
       run: |
         npm run lint
