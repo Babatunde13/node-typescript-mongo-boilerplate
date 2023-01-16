@@ -4,15 +4,15 @@ import eslintConfig from '../.eslintrc'
 
 // https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color - change color of console
 const errorLog = (data: string) => {
-    console.log('\x1b[31m', data)
+    console.log('\x1b[31m', data, '\x1b[0m')
 }
 
 const successLog = (data: string) => {
-    console.log('\x1b[32m', data)
+    console.log('\x1b[32m', data, '\x1b[0m')
 }
 
 const infoLog = (data: string) => {
-    console.log('\x1b[34m', data)
+    console.log('\x1b[34m', data, '\x1b[0m')
 }
 
 (async function lintFiles() {
