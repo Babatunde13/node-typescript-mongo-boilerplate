@@ -7,3 +7,4 @@ tmp/
 temp/
 .env
 ormconfig.json
+logs/

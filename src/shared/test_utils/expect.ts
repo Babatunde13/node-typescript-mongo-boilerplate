@@ -11,11 +11,11 @@ class Expect {
     }
     
     toBeTruthy() {
-        expect(this.obj).to.be.true
+        expect(this.obj).to.be.ok
     }
     
     toBeFalsy() {
-        expect(this.obj).to.be.false
+        expect(this.obj).to.not.be.ok
     }
     
     toBeNull() {
@@ -24,6 +24,10 @@ class Expect {
     
     toBeUndefined() {
         expect(this.obj).to.be.undefined
+    }
+
+    toHaveProperty(property: string) {
+        expect(this.obj).to.have.property(property)
     }
     
     toBeGreaterThan(expected: number) {

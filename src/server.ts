@@ -1,13 +1,14 @@
 import express, { Request, Response } from 'express'
-import logger from 'morgan'
+import requestLogger from 'morgan'
 import { ServerConfig } from './server.types'
+import logger from './shared/logger.util'
 
 export const startServer = async (config: ServerConfig) => {
     const app = express()
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
     app.set('trust proxy', true)
-    app.use(logger('tiny'))
+    app.use(requestLogger('tiny'))
 
     config.routes.forEach((route) => {
         app[route.method](route.path, async (req: Request, res: Response) => {
@@ -43,6 +44,10 @@ export const startServer = async (config: ServerConfig) => {
     })
 
     app.listen(config.port, () => {
-        console.log(`Server listening on port ${config.port}`)
+        logger.info(`Server listening on port ${config.port} 🚀`, 'Server Startup')
     })
+
+    return app
 }
+
+export default startServer

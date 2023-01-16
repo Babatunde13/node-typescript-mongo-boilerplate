@@ -1,8 +1,14 @@
+import { getAgent } from '..//shared/test_utils/request_agent'
 import expect from '../shared/test_utils/expect'
-import { getUser } from './get_user.ctrl'
 
+let agent
 describe('Get Users Controller', () => {
-    it('should get users', async () => {
-        expect(1).toBe(1)
+    before('Starting Server', async () => {
+        agent = await getAgent()
+    })
+
+    it('should require authentication', async () => {
+        const response = await agent.get('/api/v1/users')
+        expect(response.status).toBe(401)
     })
 })

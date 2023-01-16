@@ -3,7 +3,8 @@ import { config } from 'dotenv'
 config()
 
 export default {
-    port: parseInt(process.env.PORT || '3000'),
+    port: parseInt(process.env.PORT || '3001'),
+    host: process.env.HOST || 'localhost:3001',
     db: {
         DATABASE_URL: process.env.DATABASE_URL || 'localhost',
     },

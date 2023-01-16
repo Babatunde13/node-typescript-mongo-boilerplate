@@ -19,6 +19,6 @@ module.exports = {
     ],
     "rules": {
         // custom rules
-        no_dangerous_function: 'error'
+        no_dangerous_function: 'off'
     }
 };

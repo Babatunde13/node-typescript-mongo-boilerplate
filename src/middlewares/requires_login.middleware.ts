@@ -1,7 +1,7 @@
 import { BaseReq, BaseRes } from '../api_contracts/base_request.ctrl.contract'
 import { decodeUser } from '../utils/jwt.utils'
 import isError from '../utils/is_error.utils'
-import User from 'src/models/users.models.server'
+import User from '../models/users.models.server'
 
 export default async function requiresLogin (req: BaseReq): BaseRes<null> {
     let token = req.headers['Authorization']
