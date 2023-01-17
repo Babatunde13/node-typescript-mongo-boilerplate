@@ -20,9 +20,8 @@
        "resolveJsonModule": true,
        "strictBindCallApply": true,
        "skipLibCheck": true,
-       "jsx": "react",
        "sourceMap": true,
-       "lib": ["dom", "scripthost", "es2015", "es2016", "es2017"],
+       "lib": ["scripthost", "es2015", "es2016", "es2017"],
        "outDir": "dist",
        "rootDir": ".",
        "rootDirs": ["."],
@@ -38,5 +37,6 @@
        "types",
        "dist",
        "tmp",
+       "logs"
    ]
 }
