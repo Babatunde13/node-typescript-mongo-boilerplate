@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import requestLogger from 'morgan'
 import envs from './envs'
 import { ServerConfig } from './server.types'
-import logger from './shared/logger.util'
+import logger from './shared/logger'
 
 export const startServer = async (config: ServerConfig) => {
     const app = express()
