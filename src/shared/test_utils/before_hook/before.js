@@ -1,4 +1,4 @@
-import logger from "../../../shared/logger.util"
+import logger from "../../logger"
 import createTestServer from "../request_agent"
 
 before('Starting Server', async () => {
