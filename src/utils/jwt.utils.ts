@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import AppError from '../shared/AppError'
 import envs from '../envs'
 
 export const encodeUser = (userId: string) => {
@@ -12,7 +13,7 @@ export const encodeUser = (userId: string) => {
         }
     } catch (e) {
         return {
-            error: new Error((e as Error).message)
+            error: new AppError((e as Error).message, 'invalid_encoding')
         }
     }
 }
@@ -25,7 +26,7 @@ export const decodeUser = async (token: string) => {
         }
     } catch (e) {
         return {
-            error: new Error((e as Error).message)
+            error: new AppError((e as Error).message, 'invalid_decoding')
         }
     }
 }

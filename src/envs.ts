@@ -1,4 +1,5 @@
 import { config } from 'dotenv'
+import AppError from './shared/AppError'
 
 config()
 
@@ -24,23 +25,23 @@ const envs = {
 
 const verifyEnv = () => {
     if (!envs.db.DATABASE_URL) {
-        throw new Error('DATABASE_URL is not set')
+        throw new AppError('DATABASE_URL is not set', 'environment_variables_check')
     }
 
     if (!envs.secrets.jwt) {
-        throw new Error('JWT_SECRET is not set')
+        throw new AppError('JWT_SECRET is not set', 'environment_variables_check')
     }
 
     if (!envs.port) {
-        throw new Error('PORT is not set')
+        throw new AppError('PORT is not set', 'environment_variables_check')
     }
 
     if (!envs.host) {
-        throw new Error('HOST URL is not set')
+        throw new AppError('HOST URL is not set', 'environment_variables_check')
     }
 
     if (!envs.env) {
-        throw new Error('NODE_ENV is not set')
+        throw new AppError('NODE_ENV is not set', 'environment_variables_check')
     }
 
     return true

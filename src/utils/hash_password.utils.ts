@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import AppError from '../shared/AppError'
 
 export const hashPassword = async (password: string) => {
     try {
@@ -9,7 +10,7 @@ export const hashPassword = async (password: string) => {
         }
     } catch (e) {
         return {
-            error: new Error((e as Error).message)
+            error: new AppError((e as Error).message, 'invalid_hashing')
         }
     }
 }

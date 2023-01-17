@@ -8,7 +8,8 @@
       "lint": "node dist/src/lint_codes.js",
       "build": "tsc --project ./tsconfig.json",
       "start": "node dist/src/index.js",
-      "dev": "nodemon dist/src/index.js",
+      "build:watch": "tsc --project ./tsconfig.json --watch",
+     "dev": "nodemon dist/src/index.js",
       "prepare": "husky install"
    },
    "keywords": [],
