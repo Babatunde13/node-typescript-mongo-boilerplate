@@ -20,4 +20,15 @@ describe('getDatabase', () => {
         databaseStub.restore()
         databaseStub2.restore()
     })
+
+    it('should have database object with correct properties', async () => {
+        const databaseStub = createStub(envs.db, 'DATABASE_URL', 'mongodb://localhost:27017/test')
+        const database = await getDatabase()
+        expect(database.data).toHaveProperty('collection')
+        expect(database.data).toHaveProperty('collections')
+        expect(database.data).toHaveProperty('command')
+        expect(database.data).toHaveProperty('createCollection')
+        expect(database.data).toHaveProperty('createIndex')
+        databaseStub.restore()
+    })
 })

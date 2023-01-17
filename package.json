@@ -4,7 +4,7 @@
    "description": "A boilerplate for node.js, TypeScript and MongoDB. Built with ❤️  by @bkoiki950",
    "main": "index.js",
    "scripts": {
-      "test": "mocha dist/src/shared/test_utils/before_hook --exit --timeout 10000 --bail --reporter spec --exit --full-trace --sort --retries 2 dist/**/*.spec.js",
+      "test": "NODE_ENV=test mocha dist/src/shared/test_utils/before_hook --exit --timeout 10000 --bail --reporter spec --exit --full-trace --sort --retries 2 dist/**/*.spec.js",
       "lint": "node dist/src/lint_codes.js",
       "build": "tsc --project ./tsconfig.json",
       "start": "node dist/src/index.js",
