@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import requestLogger from 'morgan'
+import envs from './envs'
 import { ServerConfig } from './server.types'
 import logger from './shared/logger.util'
 
@@ -8,7 +9,9 @@ export const startServer = async (config: ServerConfig) => {
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
     app.set('trust proxy', true)
-    app.use(requestLogger('tiny'))
+    if (envs.env !== 'test') {
+        app.use(requestLogger('dev'))
+    }
 
     config.routes.forEach((route) => {
         app[route.method](route.path, async (req: Request, res: Response) => {
@@ -35,6 +38,7 @@ export const startServer = async (config: ServerConfig) => {
 
         })
     })
+
     app.use('*', (req, res) => {
         res.status(404).json({
             success: false,
