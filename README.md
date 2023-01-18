@@ -1,4 +1,4 @@
-# Node MongoDb BoilerPlate
+# Node MongoDB BoilerPlate
 
 Steps to run this project locally:
 
@@ -11,7 +11,7 @@ Steps to run this project locally:
 7. Run `npm run dev` to run the server in watch mode
 8. Run `npm start` command  to start the server
 
-You need to have a database instance to run this project as it uses mongodb to connect to a database.
+You need to have a database instance to run this project as it uses mongodb to connect to a database, you can also run the server by running `docker-compose up` which will create a docker container for MongoDB then run the instance in a container
 
 Built with [TypeScript](https://www.typescriptlang.org/), [MongoDB](https://www.mongodb.com/) and[Express](https://expressjs.com/).
 
