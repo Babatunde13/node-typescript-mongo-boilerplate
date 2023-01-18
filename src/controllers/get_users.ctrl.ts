@@ -1,5 +1,5 @@
 import { Req, Res } from '../api_contracts/get_users.ctrl.contract'
-import User from '../models/users.models.server';
+import User from '../models/users.models.server'
 
 /**
  * Get all users

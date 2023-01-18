@@ -1,5 +1,5 @@
 import { Request } from 'express'
-import { IUser } from '../models/users.model.client';
+import { IUser } from '../models/users.model.client'
 
 export type BaseReq = Request  & {
     params: { [key: string]: string | undefined }

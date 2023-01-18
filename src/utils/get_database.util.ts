@@ -1,12 +1,12 @@
-import mongoose from 'mongoose';
-import { promisify } from 'util';
-import envs from '../envs';
+import mongoose from 'mongoose'
+import { promisify } from 'util'
+import envs from '../envs'
 
 export default async function getDatabase() {
     try {
-        const url = envs.db.DATABASE_URL;
-        await promisify(mongoose.connect)(url);
-        const databaseConnection = mongoose.connection;
+        const url = envs.db.DATABASE_URL
+        await promisify(mongoose.connect)(url)
+        const databaseConnection = mongoose.connection
 
         return {
             data: databaseConnection.db

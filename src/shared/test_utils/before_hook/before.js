@@ -1,5 +1,5 @@
-import logger from "../../logger"
-import createTestServer from "../request_agent"
+import logger from '../../logger'
+import createTestServer from '../request_agent'
 
 before('Starting Server', async () => {
     logger.info('Starting Server...', 'tests')
