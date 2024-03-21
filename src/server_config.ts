@@ -15,7 +15,6 @@ export const routes: Route[] = [
     {
         path: '/api/v1/docs',
         method: GET,
-        middlewares: [],
         handler: async () => {
                 return {
                     success: true,
@@ -31,7 +30,6 @@ export const routes: Route[] = [
     {
         path: '/',
         method: GET,
-        middlewares: [],
         handler: async (req) => {
             return {
                 success: true,
