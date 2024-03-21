@@ -1,4 +1,7 @@
 version: '3.8'
+networks:
+  api-network:
+    driver: bridge
 services:
   api:
     container_name: api
@@ -13,19 +16,20 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: 'postgresql://${DB_USERNAME}:${DB_PASSWORD}@db/${DB_NAME}'
+      DATABASE_URL: 'mongodb://db/express-ts-test'
+    networks:
+      - api-network
 
   db:
     container_name: db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
     image: mongo:latest
     ports:
       - 27017:27017
     restart: always
     volumes:
       - mongo-data:/var/lib/mongodb/data
+    networks:
+      - api-network
 
 volumes:
   mongo-data:
