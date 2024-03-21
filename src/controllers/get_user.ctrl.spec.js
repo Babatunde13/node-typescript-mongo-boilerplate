@@ -5,7 +5,7 @@ let agent
 
 describe('Get Users Controller', () => {
     before('Starting Server', async () => {
-        agent = await getAgent()
+        agent = getAgent()
     })
 
     it('should require authentication', async () => {

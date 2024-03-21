@@ -1,19 +1,14 @@
 import { startServer } from './server'
 import { routes } from './server_config'
 import envs from './envs'
-import { createDbConnection } from './db_connection'
-import isError from './utils/is_error.utils'
-import logger from './shared/logger'
+import { AppDBConnection } from './db_connection'
 
 export const runServer = async () => {
-    const connection = await createDbConnection()
-    if (isError(connection)) {
-        logger.error('Error connecting to database', 'Database Connection')
-        return
-    }
+    const appDB = new AppDBConnection(envs.database.url)
     await startServer({
         port: envs.port,
-        routes
+        routes,
+        db: appDB
     })
 }
 

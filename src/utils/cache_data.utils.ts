@@ -1,7 +1,8 @@
-let cacheData: { [key: string]: any} = {}
+import { RedisClientType, createClient } from 'redis'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const setKeyInCache = (key: string, value: any) => {
+let cacheData: { [key: string]: unknown} = {}
+
+export const setKeyInCache = (key: string, value: unknown) => {
     cacheData[key] = value
 }
 
@@ -15,3 +16,63 @@ export const getKeyInCache = (key: string) => {
 export const resetCache = () => {
     cacheData = {}
 }
+
+export class RedisClient {
+    uri: string
+    connected = false
+    client: RedisClientType
+
+    static createClient(url: string) {
+        return new RedisClient(url)
+    }
+
+    constructor(url: string) {
+        this.uri = url
+    }
+
+    async connect() {
+        const client = createClient({
+            url: this.uri
+        })
+
+        client.on('connect', () => {
+            this.connected = true
+        })
+        return client
+    }
+
+    async disconnect() {
+        if (!this.connected) {
+            return
+        }
+
+        this.client.quit()
+        this.connected = false
+    }
+
+    async set(key: string, value: string) {
+        if (!this.connected) {
+            return
+        }
+
+        this.client.set(key, value)
+    }
+
+    async get(key: string) {
+        if (!this.connected) {
+            return
+        }
+
+        return this.client.get(key)
+    }
+
+    async clear () {
+        if (!this.connected) {
+            return
+        }
+
+        this.client.flushAll()
+    }
+}
+
+export default RedisClient

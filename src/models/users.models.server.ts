@@ -60,6 +60,6 @@ userSchema.set('toJSON', {
     }
 })
 
-const User = model<IUser>('User', userSchema)
+const userModel = model<IUser>('User', userSchema)
 
-export default User
+export default userModel

@@ -9,7 +9,7 @@ export type BaseReq = Request  & {
 
 export type ReqWithParams<T> = BaseReq & T
 
-type Response<T> =  {
+export type Response<T> =  {
 	success: boolean
     message: string
 	data: T
@@ -20,4 +20,5 @@ type Response<T> =  {
     }
 }
 
-export type BaseRes<T> = Promise<Response<T> | void>
+export type BaseRes<T> = Promise<Response<T>>
+export type MiddlewareResponse<T=null> = Promise<Response<T> | void>

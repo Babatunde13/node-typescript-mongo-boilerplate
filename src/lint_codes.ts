@@ -55,8 +55,8 @@ const infoLog = (data: string) => {
             await ESLint.outputFixes(lintResult)
 
             if (lintResult.length) {
-                lintResult.forEach((r: any) => {
-                    r.messages.forEach((m: any) => {
+                lintResult.forEach((r: { messages: { ruleId: string; severity: number, message: string, line: number; column: number}[], filePath: string }) => {
+                    r.messages.forEach((m) => {
                         if (m.severity === 2) {
                             errors.push(
                                 `❌ ${`eslint(${m.ruleId || ''})`} - ${m.message} at ${r.filePath}:${m.line}:${m.column}`

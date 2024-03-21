@@ -13,7 +13,7 @@ export const encodeUser = (userId: string) => {
         }
     } catch (e) {
         return {
-            error: new AppError((e as Error).message, 'invalid_encoding')
+            error: new AppError({ error: (e as Error), type: 'invalid_encoding' })
         }
     }
 }
@@ -26,7 +26,7 @@ export const decodeUser = async (token: string) => {
         }
     } catch (e) {
         return {
-            error: new AppError((e as Error).message, 'invalid_decoding')
+            error: new AppError({ error: (e as Error), type: 'invalid_decoding' })
         }
     }
 }

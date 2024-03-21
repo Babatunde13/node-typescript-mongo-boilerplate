@@ -9,13 +9,14 @@ export const routes: Route[] = [
     {
         path: '/api/v1/users/',
         method: GET,
-        handlers: [requiresLogin, requiresAdmin, getUsersCtrl]
+        middlewares: [requiresLogin, requiresAdmin],
+        handler: getUsersCtrl
     },
     {
         path: '/api/v1/docs',
         method: GET,
-        handlers: [
-            async () => {
+        middlewares: [],
+        handler: async () => {
                 return {
                     success: true,
                     data: null,
@@ -26,22 +27,20 @@ export const routes: Route[] = [
                     }
                 }
             }
-        ]
     },
     {
         path: '/',
         method: GET,
-        handlers: [
-            async (req) => {
-                return {
-                    success: true,
-                    data: null,
-                    message: `Welcome to Babatunde Boilerplate API, you cann access the <a href="${req.protocol}://${req.get('host')}/api/v1/docs">docs</a> here.`,
-                    options: {
-                        sendString: true
-                    }
+        middlewares: [],
+        handler: async (req) => {
+            return {
+                success: true,
+                data: null,
+                message: `Welcome to Babatunde Boilerplate API, you cann access the <a href="${req.protocol}://${req.get('host')}/api/v1/docs">docs</a> here.`,
+                options: {
+                    sendString: true
                 }
             }
-        ]
+        }
     }
 ]

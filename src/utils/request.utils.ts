@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-export const get = async (url: string) => {
+export const get = async <T=unknown>(url: string) => {
     try {
         const headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
-        const response = await axios.get(url, { headers })
+        const response = await axios.get<T>(url, { headers })
         return {
             data: response.data
         }
@@ -17,13 +17,13 @@ export const get = async (url: string) => {
     }
 }
 
-export const post = async (url: string, body: any) => {
+export const post = async <T=unknown>(url: string, body: unknown) => {
     try {
         const headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
-        const response = await axios.post(url, body, { headers })
+        const response = await axios.post<T>(url, body, { headers })
         return {
             data: response.data
         }

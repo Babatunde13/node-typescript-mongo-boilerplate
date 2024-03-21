@@ -1,6 +1,8 @@
-import { BaseRes } from './api_contracts/base_request.ctrl.contract'
+import { BaseReq, BaseRes, MiddlewareResponse } from './api_contracts/base_request.ctrl.contract'
+import { AppDBConnection } from './db_connection'
 
 export interface ServerConfig {
+    db: AppDBConnection
     port: number
     routes: Route[]
 }
@@ -13,6 +15,6 @@ export enum HttpMethod {
 export interface Route {
     path: string
     method: HttpMethod
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    handlers: ((req: any) => BaseRes<any>)[]
+    middlewares?: ((req: BaseReq) => MiddlewareResponse)[]
+    handler: ((req: any) => BaseRes<any>)
 }
